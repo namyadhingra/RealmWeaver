@@ -1,5 +1,29 @@
 #include "external.h"
 
+string getApiKey() {
+    ifstream configFile(".env");
+    string line;
+    string apiKey;
+
+    if (!configFile.is_open()) {
+        cerr << "Could not open the configuration file!" << endl;
+        return ""; // Return an empty string if the file cannot be opened
+    }
+
+    while (getline(configFile, line)) {
+        if (line.find("GEMINI_API_KEY=") == 0) {
+            apiKey = line.substr(15); // Get the value after "GEMINI_API_KEY="
+            break;
+        }
+    }
+
+    if (apiKey.empty()) {
+        cerr << "API Key not found in configuration file!" << endl;
+    }
+
+    return apiKey;
+}
+
 size_t WriteCallBack(void* contents, size_t size, size_t nmemb, void* userp)
 {
     ((string*)userp)->append((char*)contents, size*nmemb);
@@ -15,7 +39,7 @@ json sendGeminiReq(const string &prompt)
     curl= curl_easy_init();
     if(curl)
     {
-        string api="AIzaSyBsuy9mNhtLaGVBtfDOMbHpalRzy7oMB0o";
+        string api=getApiKey();
         struct curl_slist* headers = nullptr;
         headers=curl_slist_append(headers,"Content-Type: application/json");
         // headers=curl_slist_append(headers,"Authorization: Bearer ${api}");
