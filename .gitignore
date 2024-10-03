@@ -1,0 +1,77 @@
+# Ignore compiled object files and executables
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dll
+*.dylib
+
+# Ignore libraries
+lib/
+
+# Ignore dependency files
+*.d
+*.a
+*.la
+
+# Ignore built files (binaries, executables)
+build/
+bin/
+*.log
+
+# Ignore temporary files created by editors/IDEs
+*.swp
+*~
+*.swo
+*.user
+*.ncb
+*.sdf
+*.opensdf
+*.pidb
+*.idb
+*.pdb
+
+# Ignore generated Makefiles and CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# Ignore Visual Studio files
+.vscode/
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.pdb
+
+# Ignore Xcode files
+*.xcodeproj/
+*.xcworkspace/
+*.xcuserdata/
+*.xcuserstate
+
+# Ignore temporary files created by the OS
+.DS_Store
+Thumbs.db
+
+# Ignore Precompiled headers
+*.gch
+*.pch
+
+# Ignore logs, debug files, and caches
+*.log
+*.stackdump
+.idea/
+*.log
+
+# Ignore other auto-generated files
+*.dep
+*.tmp
+*.obj
+*.ipch
+
+# Ignore the executable
+main
