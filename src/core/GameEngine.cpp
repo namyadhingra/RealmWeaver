@@ -1,4 +1,5 @@
-#include "../include/pch.h"
+#include "external.h"
+#include "Gemini.h"
 
 int main()
 {

@@ -1,7 +1,9 @@
+#pragma once
+
 #include "external.h"
 
 string getApiKey() {
-    ifstream configFile(".env");
+    ifstream configFile("../.env");
     string line;
     string apiKey;
 
