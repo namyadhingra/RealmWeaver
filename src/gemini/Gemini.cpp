@@ -245,3 +245,11 @@ future<json> Gemini::genQuests(int rank,const string &name,const string &backSto
 future<json> Gemini::genItem(int rank){
     return Gemini::genStatsForTheme("item");
 }
+
+future<json> Gemini::genNPCName(int rank){
+    return Gemini::genStatsForTheme("NPC name");
+}
+
+future<json> Gemini::genNPCBackStory(int rank){
+    return Gemini::genStatsForTheme("NPC back story");
+}
