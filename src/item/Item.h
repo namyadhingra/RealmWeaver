@@ -1,7 +1,7 @@
 #pragma once
 
-#include <external.h>
-#include<Stats.h>
+#include "external.h"
+#include "Stats.h"
 
 class Item 
 {
@@ -16,7 +16,7 @@ private:
 
 public:
     // Constructor
-    Item();                                                                 //Fetched from db
+    Item(const int rank);                                                                 //Fetched from db
     Item(const string& name, const string& description, int rank);  //Newly generated fron the gemini
 
     // Getters
