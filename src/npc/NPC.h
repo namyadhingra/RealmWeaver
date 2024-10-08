@@ -2,6 +2,8 @@
 
 #include "external.h"
 #include "Gemini.h"
+#include "Quest.h"
+#include "Stats.h"
 
 
 class NPC {
@@ -13,8 +15,6 @@ private:
     queue<Quest*> quests;               // Queue of quests that the NPC can offer
 
     // Helper functions
-    string generateName(int rank);              // Generates a name based on the NPC's rank (via Gemini API)
-    string generateBackStory(int rank);         // Generates a backstory based on the NPC's rank (via Gemini API)
     void generateQuests();                      // Generate initial quests (from Gemini API or DB)
 
 public:
