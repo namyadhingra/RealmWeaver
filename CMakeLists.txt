@@ -16,7 +16,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include             #General include dir
     ${CMAKE_SOURCE_DIR}/src/gemini          # Gemini module headers
     ${CMAKE_SOURCE_DIR}/src/core            #Core game engine headers
-    ${CMAKE_SOURCE_DIR}/src/equipment       #Equipment module headers
+    ${CMAKE_SOURCE_DIR}/src/item       #Equipment module headers
     ${CMAKE_SOURCE_DIR}/src/event           #Event module headers
     ${CMAKE_SOURCE_DIR}/src/interactions    #core game engine headers
     ${CMAKE_SOURCE_DIR}/src/player          # Player module headers
@@ -36,7 +36,6 @@ find_package(CURL REQUIRED)
 set(GEMINI_SOURCES
     src/gemini/Gemini.cpp
 )
-
 
 set(CORE_SOURCES
     src/core/GameEngine.cpp
@@ -66,8 +65,8 @@ set(INVENTORY_SOURCES
     src/inventory/Inventory.cpp
 )
 
-set(EQUIPMENT_SOURCES
-    src/equipment/Equipment.cpp
+set(ITEM_SOURCES
+    src/item/Item.cpp
 )
 
 set(EVENT_SOURCES
@@ -90,7 +89,7 @@ set(SOURCES
     ${LOCATION_SOURCES}
     ${STATS_SOURCES}
     ${INVENTORY_SOURCES}
-    ${EQUIPMENT_SOURCES}
+    ${ITEM_SOURCES}
     ${EVENT_SOURCES}
     ${INTERACTION_SOURCES}
 )
