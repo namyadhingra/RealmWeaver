@@ -1,10 +1,11 @@
+#pragma once
 #include "external.h"
 #include "Item.h"
 #include "Stats.h"
 #include <vector>
 #include <string>
 
-class Stats;
+
 class Reward {
 private:
     Stats stats;     // Stat reward (can increase health, attack, etc.)

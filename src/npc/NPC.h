@@ -1,10 +1,8 @@
 #pragma once
 
-#include <external.h>
-#include <Gemini.h>
+#include "external.h"
+#include "Gemini.h"
 
-class Quest; // Forward declaration of the Quest class
-class Stats; // Forward declaration of the Stats class
 
 class NPC {
 private:

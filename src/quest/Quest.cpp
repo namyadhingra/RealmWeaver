@@ -24,12 +24,10 @@ void Reward::displayReward() const {
 
 // Quest class methods
 
-Quest::Quest() : id(0), rank(1), status("ongoing"), reward(Reward(Stats(), 0, Item())) {}
+Quest::Quest() : id(0), rank(1), status("ongoing"), reward(Reward(Stats(), 0, Item(1))) {}
 
-// Quest::Quest(int id, const string& description, int rank, const vector<int>& objectives, Reward reward)
-//     : id(id), description(description), rank(rank), objectives(objectives), reward(reward), status("ongoing") {
-        
-//     }
+Quest::Quest(int id, const string& description, int rank, const vector<int>& objectives, Reward reward)
+    : id(id), description(description), rank(rank), objectives(objectives), reward(reward), status("ongoing") {}
 
 int Quest::getId() const {
     return id;
@@ -68,10 +66,9 @@ void Quest::addObjective(int objectiveId, const string& objectiveDesc) {
     this->objectiveDesc.push_back(objectiveDesc);
 }
 
-// void Quest::markObjectiveComplete(int objectiveId) {
-//     // Logic to mark objective as completed (for now we assume objective completion will be handled elsewhere)
-//     return;
-// }
+void Quest::markObjectiveComplete(int objectiveId) {
+    // Logic to mark objective as completed (for now we assume objective completion will be handled elsewhere)
+}
 
 bool Quest::isQuestComplete() const {
     // Return true if all objectives are marked as complete

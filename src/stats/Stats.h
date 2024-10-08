@@ -1,3 +1,5 @@
+#pragma once
+
 #include "external.h"
 #include "Gemini.h"
 
