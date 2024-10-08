@@ -1,9 +1,12 @@
-#include <external.h>
+#include "external.h"
+#include "Gemini.h"
 
 class Stats
 {
     private :
+
         unordered_map<string, int> attributes;
+        // Gemini gemini;
     
     public:
     // Constructors
