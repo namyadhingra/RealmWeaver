@@ -4,6 +4,7 @@
 // Default constructor
 Stats::Stats() {
     // Default stats can be empty or you can set up some basic placeholder stats if needed
+    Stats("fantasy"); // Default theme for stats
 }
 
 // Constructor that initializes stats based on theme
