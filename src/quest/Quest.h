@@ -1,8 +1,6 @@
-#pragma once
-
-#include <external.h>
-#include <Item.h>
-#include <Stats.h>
+#include "external.h"
+#include "Item.h"
+#include "Stats.h"
 #include <vector>
 #include <string>
 
