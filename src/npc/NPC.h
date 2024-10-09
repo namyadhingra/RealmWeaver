@@ -1,10 +1,10 @@
 #pragma once
 
-#include <external.h>
-#include <Gemini.h>
+#include "external.h"
+#include "Gemini.h"
+#include "Quest.h"
+#include "Stats.h"
 
-class Quest; // Forward declaration of the Quest class
-class Stats; // Forward declaration of the Stats class
 
 class NPC {
 private:
@@ -15,8 +15,6 @@ private:
     queue<Quest*> quests;               // Queue of quests that the NPC can offer
 
     // Helper functions
-    string generateName(int rank);              // Generates a name based on the NPC's rank (via Gemini API)
-    string generateBackStory(int rank);         // Generates a backstory based on the NPC's rank (via Gemini API)
     void generateQuests();                      // Generate initial quests (from Gemini API or DB)
 
 public:

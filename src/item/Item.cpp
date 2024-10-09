@@ -1,47 +1,55 @@
-// #include <Item.h>
+#include <Item.h>
 
-// // Constructor
-// Item::Item()
-// {
-//     //get item from db or from gemini
-// }
+// Constructor
+Item::Item(const int rank) : rank(rank)
+{
+    //get item from db or from gemini
+    future<json> futureJson = Gemini().genItem(rank);
+    json item = futureJson.get(); // Block until the result is ready
+    id, name, description =  item["id"], item["name"], item["description"];
 
-// Item::Item(const string& name, const string& description, int rank)
-//     : name(name), description(description), rank(rank) ,isEquipped(0)
-// {
-//     // get id from db and add here.
-// }
+    isEquipped=false;
+    stats = Stats();
+}
 
-// // Getters
-// int Item::getId() const {
-//     return id;
-// }
+Item::Item(const string& name, const string& description, int rank)
+    : name(name), description(description), rank(rank) ,isEquipped(0)
+{
+    // get id from db and add here.
+    std::cout << "DB not yet formed" << endl;
+    return;
+}
 
-// const string& Item::getName() const {
-//     return name;
-// }
+// Getters
+int Item::getId() const {
+    return id;
+}
 
-// const string& Item::getDescription() const {
-//     return description;
-// }
+const string& Item::getName() const {
+    return name;
+}
 
-// int Item::getRank() const {
-//     return rank;
-// }
+const string& Item::getDescription() const {
+    return description;
+}
 
-// // Display method for item details
-// void Item::display() const {
-//     cout << "Item ID: " << id << endl;
-//     cout << "Name: " << name << endl;
-//     cout << "Description: " << description << endl;
-//     cout << "Rank: " << rank << endl;
-//     stats.displayStats();
-//     cout << "Equipped Status: "<<isEquipped<< endl;
-// }
+int Item::getRank() const {
+    return rank;
+}
 
-// void Item::equip()
-// {
-//     isEquipped=1;
-//     cout << "Equipped "<< getName()<< endl;
+// Display method for item details
+void Item::display() const {
+    cout << "Item ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "Description: " << description << endl;
+    cout << "Rank: " << rank << endl;
+    stats.displayStats();
+    cout << "Equipped Status: "<<isEquipped<< endl;
+}
 
-// }
+void Item::equip()
+{
+    isEquipped=1;
+    cout << "Equipped "<< getName()<< endl;
+
+}

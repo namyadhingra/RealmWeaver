@@ -235,3 +235,21 @@ future<json> Gemini::genStatsForTheme(const string &theme)
         return defaultJson;
     });
 }
+
+
+
+future<json> Gemini::genQuests(int rank,const string &name,const string &backStory){
+    return Gemini::genStatsForTheme("quest");
+}
+
+future<json> Gemini::genItem(int rank){
+    return Gemini::genStatsForTheme("item");
+}
+
+future<json> Gemini::genNPCName(int rank){
+    return Gemini::genStatsForTheme("NPC name");
+}
+
+future<json> Gemini::genNPCBackStory(int rank){
+    return Gemini::genStatsForTheme("NPC back story");
+}

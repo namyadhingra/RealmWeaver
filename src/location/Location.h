@@ -1,7 +1,7 @@
 #pragma once
 
-#include <external.h>
-#include <NPC.h>
+#include "external.h"
+#include "NPC.h"
 
 
 class Location

@@ -8,7 +8,10 @@ project(RealmWeaver)
 
 # Set the C++ standard to use (C++11 in this case).
 # This ensures that your compiler will use the correct version of C++.
-set(CMAKE_CXX_STANDARD 11)
+
+set(CMAKE_CXX_STANDARD 17)  # Set C++ standard to C++17
+set(CMAKE_CXX_STANDARD_REQUIRED ON)  # Require this standard
+set(CMAKE_CXX_EXTENSIONS OFF)  # Disable compiler-specific extensions
 
 # Include the header files from the "include" directory.
 # This tells the compiler where to find header files during compilation.
