@@ -1,14 +1,18 @@
+#pragma once
 #include <external.h>
+#include <Gemini.h>
+
 
 class Stats
 {
     private :
         unordered_map<string, int> attributes;
-    
+        static unordered_map<string, int> defaultStats;
+
     public:
     // Constructors
     Stats();  // Default constructor
-    Stats(const string& theme); // Constructor that initializes stats based on a theme using Gemini API
+    Stats(const int& rank, const string &npcName, const string &npcBackStory);
 
     // Setters
     void setStat(const string& statName, int value);    // Set a specific stat
