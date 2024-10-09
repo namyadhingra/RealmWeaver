@@ -1,0 +1,18 @@
+{
+    "contents": [
+                       
+    ],
+    "systemInstruction": {
+      "role": "system",
+      "parts": [
+        {
+          "text": "Respond exactly and concisely with a JSON object that follows this format: { \"npc\": {\"name\": \"NPC Name\", \"rank\": rankValue, \"backstory\": \"NPC backstory.\"} }. Use the theme, Rank of the npc, its location details specified by the user to customize the NPC details. If the input is invalid, do not return the JSON."
+        }
+      ]
+    },
+    "generationConfig": {
+      "temperature": 0.1,
+      "responseMimeType": "application/json"
+    }
+  }
+  

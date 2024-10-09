@@ -1,0 +1,176 @@
+{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Whispering Will', with the following description: 'Will, a wisp of a man with eyes that seem to hold the weight of a thousand forgotten stories, haunts Forgotten Alley. He scavenges for scraps, his whispers echoing through the shadows, a constant reminder of the alley's forgotten souls. He claims to be a former scholar, driven mad by the whispers of the alley, but his true past remains a mystery. He is often seen muttering to himself, his words a jumble of forgotten lore and cryptic warnings. Some say he can see things others cannot, glimpses of the past and future intertwined in the alley's shadows.'. The NPC has a rank of 1/10 (Inferior). The attributes that need values are: charisma (7), strength (5), stealth (6), magic (8), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Each attribute must be greater than (initial value * (rank - 1) ^ 10) and less than (initial value * rank ^ 10). Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 1, \"attributes\": [{\"charisma\": 10}, {\"strength\": 5}, {\"stealth\": 10}, {\"magic\": 15}, {\"health\": 100}] }\n\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Erika the Scribe', with the following description: 'Erika is a young scribe working in the royal library. She spends most of her days copying ancient texts and organizing scrolls, dreaming of adventures beyond the walls of the castle.' The NPC has a rank of 2/10 (Basic). The attributes that need values are: health (100), intelligence (8), wisdom (7), dexterity (5), patience (6). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{  \"rank\": 2, \"attributes\": [{\"invention\": 56}, {\"agility\": 67}, {\"mechanics\": 78}, {\"engineering\": 89}, {\"health\": 234}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Elara', with the following description: 'Elara is a young woman with a bright smile and a knack for haggling. She helps her family run a small stall at the Farmer's Market, selling fresh vegetables grown in their garden. Though she dreams of a life beyond the market, she finds joy in the community and the vibrant energy of the bustling crowds.'. The NPC has a rank of 3/10 (Common). The attributes that need values are: leadership (5), defense (7), charisma (6), strength (8), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{  \"rank\": 3, \"attributes\": [{\"leadership\": 130}, {\"defense\": 226}, {\"charisma\": 387}, {\"strength\": 187}, {\"health\": 1263}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Elias 'The Archivist' Thorne', with the following description: 'Elias was a scholar before the world ended, spending his days lost in the pages of the library. Now, he scours the ruins, desperately clinging to the hope of finding something that can help rebuild society. He's become a bit eccentric, muttering to himself about lost knowledge and forgotten wisdom. He's not hostile, but he's wary of outsiders, believing they only want to steal what little remains.'. The NPC has a rank of 4/10 (Uncommon). The attributes that need values are: scavenging (6), crafting (5), survival (8), stamina (7), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Each attribute must be greater than (initial value * (rank - 1) ^ 10) and less than (initial value * rank ^ 10). Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 4, \"attributes\": [{\"scavenging\": 1561}, {\"crafting\": 1096}, {\"survival\": 1748}, {\"stamina\": 1594}, {\"health\": 10010}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Sylvan Whisper', with the following description: 'Sylvan Whisper is a rare, ancient dryad who has lived in the Enchanted Grove for centuries. She is a guardian of the forest, fiercely protective of its delicate balance. Her wisdom is vast, and she is known to offer cryptic advice to those who seek her out. She is said to be able to communicate with the trees and other creatures of the forest, and her presence is said to bring peace and tranquility to the grove.'. The NPC has a rank of 5/10 (Rare). The attributes that need values are: magic (5), wisdom (6), dexterity (7), strength (8), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 5, \"attributes\": [{\"magic\": 10240}, {\"wisdom\": 15552}, {\"dexterity\": 16807}, {\"strength\": 20736}, {\"health\": 102300}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Anya 'Neon' Petrova', with the following description: 'Anya Petrova, known on the streets as 'Neon,' is a legendary hacker and information broker who operates from a hidden server farm within the Neon Spire. Her reputation precedes her, whispered in hushed tones in the darkest corners of the city's underbelly. She's known for her ability to access any system, no matter how secure, and for her unwavering loyalty to her clients, even if it means defying the most powerful corporations. Some say she's a ghost, a phantom who exists only in the digital realm, while others claim to have seen her, a young woman with eyes that shimmer like the neon lights of the Spire. Her motives are shrouded in mystery, but one thing is certain: she's a force to be reckoned with, a player in the digital game of power that defines the city.'. The NPC has a rank of 6/10 (Unique). The attributes that need values are: defence (5), agility (5), strength (5), willpower (5), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 6, \"attributes\": [{\"defense\": 156205}, {\"agility\": 150625}, {\"strength\": 156205}, {\"willpower\": 105625}, {\"health\": 1560250}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Xandros the Unseen', with the following description: 'Xandros is a creature of pure shadow, a being of immense power who dwells in the Abyssal Cavern. He is said to be the last of his kind, a race of ancient beings who were once guardians of the cavern's secrets. Xandros is a master of illusion and manipulation, able to blend seamlessly into the shadows and control the minds of others. He is rumored to be searching for a way to restore his people to their former glory, and he will stop at nothing to achieve his goal.'. The NPC has a rank of 7/10 (Epic). The attributes that need values are: agility (6), strength (8), mana (50), willpower (10), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 7, \"attributes\": [{\"agility\": 1799306}, {\"strength\": 1480756}, {\"mana\": 1174900}, {\"willpower\": 1771561}, {\"health\": 17764900}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Hephaestus', with the following description: 'Hephaestus, the divine blacksmith, resides in his forge beneath Mount Olympus. Despite his physical limitations, he is a master craftsman, crafting weapons for the gods and forging the lightning bolts of Zeus. His fiery temper is as legendary as his skill, and he is known for his fierce independence and unwavering loyalty to his family.'. The NPC has a rank of 8/10 (Legendary). The attributes that need values are: wisdom (6), charisma (5), strength (7), divine power (8), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 8, \"attributes\": [{\"wisdom\": 27993600}, {\"charisma\": 16796160}, {\"strength\": 20971520}, {\"divine power\": 10976220}, {\"health\": 167961600}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Xal'Tzeth, the Whispering Prophet', with the following description: 'Xal'Tzeth is a being of pure, unadulterated madness, a conduit for the whispers of the Great Old Ones. Once a mortal scholar, he delved too deeply into forbidden texts, his mind shattered by the cosmic horrors he unearthed. Now, he wanders the Eldritch Ruins, a gibbering prophet, his words a tapestry of madness and prophecy. He speaks of the coming of the Great Ones, of the end of all things, and of the inevitable doom of humanity. His eyes burn with an unnatural light, and his voice, a rasping whisper, carries the weight of unimaginable power.'. The NPC has a rank of 9/10 (Mythic). The attributes that need values are: lore (5), investigation (7), sanity (50), willpower (6), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 9, \"attributes\": [{\"lore\": 387420489}, {\"investigation\": 140353607}, {\"sanity\": 188250489}, {\"willpower\": 287745489}, {\"health\": 1874204809}] }\n"
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Generate attributes for an NPC named 'Aetheria', with the following description: 'Aetheria is an ancient entity, born from the very essence of the Realm of the Eternal. Her existence predates the concept of time, and she has witnessed countless cycles of creation and destruction. She is a being of pure light and energy, her form shifting and shimmering like a nebula. Aetheria is responsible for maintaining the delicate balance of the Realm, ensuring that the fabric of reality remains intact. She is a benevolent and wise being, offering guidance and wisdom to those who seek her out.'. The NPC has a rank of 10/10 (Divine). The attributes that need values are: aura (5), celestial knowledge (6), divine power (8), mana (50), health (100). Here, the values in the brackets are the initial stats of a rank 1/10 (Inferior) player. Please provide suitable values for these attributes based on the NPC's rank."
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "{ \"rank\": 10, \"attributes\": [{\"aura\": 1976562500}, {\"celestial knowledge\": 1625371832}, {\"divine power\": 1268376478}, {\"mana\": 1987654321}, {\"health\": 15417628919}] }\n"
+                }
+            ]
+        }
+    ],
+    "systemInstruction": {
+        "role": "system",
+        "parts": [
+            {
+                "text": "Respond exactly and concisely with a JSON object that follows this format: { \"rank\" : rank, \"attributes\": [{\"attribute1\": value1}, {\"attribute2\": value2}, {\"attribute3\": value3}, {\"attribute4\": value4}, {\"attribute5\": value5}] }. Use the initial values of the rank 1 stats and follow the rule - Each attribute stats value must be greater than (rank - 1) ^ 10 and less than rank ^ 10. If the input is invalid, do not return the JSON."
+            }
+        ]
+    },
+    "generationConfig": {
+        "temperature": 0.1,
+        "responseMimeType": "application/json"
+    }
+}

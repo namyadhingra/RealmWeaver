@@ -149,15 +149,13 @@
         "role": "system",
         "parts": [
           {
-            "text": "Respond exactly and concisely with a JSON object that follows this format: { \"attributes\": [\"attribut1\", \"attribute2\", \"attribute3\", \"attribute4\", \"attribute5\"] }. Use the theme specified by the user to customize the attributes."
+            "text": "Respond exactly and concisely with a JSON object that follows this format: { \"attributes\": [\"attribut1\", \"attribute2\", \"attribute3\", \"attribute4\", \"attribute5\"] }. Use the theme specified by the user to customize the attributes. If the invalid theme do not return the json"
           }
         ]
       },
     
     "generationConfig": {
         "temperature": 0.1,
-        "presencePenalty": 0.2,
-        "frequencyPenalty": 0.0,
         "responseMimeType": "application/json"
     }
   }
