@@ -1,8 +1,7 @@
 #pragma once
-
 #include <external.h>
-#include <NPC.h>
 
+class NPC;
 
 class Location
 {
@@ -20,7 +19,7 @@ private:
 public:
     Location(int rank);
     Location(int rank,const string &name);
-    ~Location();
+    Location(int rank,const string &name, const string &desc);
 
     //getters
     string getName() const;
