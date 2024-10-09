@@ -1,6 +1,9 @@
 #pragma once
 
 #include <external.h>
+#include <GameEngine.h>
+#include <NPC.h>
+#include <Stats.h>
 
 class Gemini
 {
@@ -13,17 +16,17 @@ class Gemini
         json sendGeminiReq(const string &prompt);
         json sendGeminiReq(const string &promptFilePath, const string &prompt);
         json sendBatchGeminiReq(const vector<string>& prompts);
-        json isJsonCorrect(const json& resp, const json& def);
+        json isRespCorrect(const json& resp, const json& def);
 
     public:
         Gemini();
 
-        future<json> genStatsForTheme(const string &theme);
-        future<json> genNPCName(int rank);
-        future<json> genNPCBackStory(int rank);
-        future<json> genLocationByGemini(int rank);
-        future<json> genLocationByGemini(int rank,const string &name);
-        future<json> genQuests(int rank,const string &name,const string &backStory);
+        future<json> genStatsForTheme();
+        future<json> genNPC(const int &rank,const string &LocName, const string &LocDesc);
+        future<json> genNPCStats(const int& rank, const string &npcName, const string &npcBackStory);
+        future<json> genQuests(const int &rank,const string &name,const string &backStory);
+        future<json> genLocationByGemini(const int &rank);
+        future<json> genLocationByGemini(const int &rank,const string &name);
 
         static future<vector<json>> genMutlipleLocations(const vector<int>& rank);
 };
