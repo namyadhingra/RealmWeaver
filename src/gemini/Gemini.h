@@ -28,5 +28,7 @@ class Gemini
         future<json> genLocationByGemini(const int &rank);
         future<json> genLocationByGemini(const int &rank,const string &name);
 
+        future<json> genItem(int rank);
+
         static future<vector<json>> genMutlipleLocations(const vector<int>& rank);
 };

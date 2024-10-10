@@ -6,6 +6,7 @@
 class Stats
 {
     private :
+
         unordered_map<string, int> attributes;
         static unordered_map<string, int> defaultStats;
 

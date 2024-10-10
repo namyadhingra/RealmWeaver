@@ -4,8 +4,8 @@
 #include <Gemini.h>
 #include <Location.h>
 
-class Quest; // Forward declaration of the Quest class
-class Stats; // Forward declaration of the Stats class
+class Stats;
+class Quest;
 
 class NPC {
 private:

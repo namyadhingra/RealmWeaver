@@ -6,8 +6,6 @@
 #include<Stats.h>
 #include<Quest.h>
 
-class Quest;
-
 class Player
 {
     private :
