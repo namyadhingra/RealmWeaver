@@ -3,17 +3,17 @@
 // Constructor
 Item::Item(const int rank) : rank(rank)
 {
-    //get item from db or from gemini
-    future<json> futureJson = Gemini().genItem(rank);
-    json item = futureJson.get(); // Block until the result is ready
-    id, name, description =  item["id"], item["name"], item["description"];
+    // //get item from db or from gemini
+    // future<json> futureJson = Gemini().genItem(rank);
+    // json item = futureJson.get(); // Block until the result is ready
+    // id, name, description =  item["id"], item["name"], item["description"];
 
-    isEquipped=false;
-    stats = Stats();
+    // isEquipped=false;
+    // stats =new Stats();
 }
 
-Item::Item(const string& name, const string& description, int rank)
-    : name(name), description(description), rank(rank) ,isEquipped(0)
+Item::Item(const int& rank,const string& name, const string& description,Stats *stats)
+    : name(name), description(description), rank(rank) ,isEquipped(0),stats(stats)
 {
     // get id from db and add here.
     std::cout << "DB not yet formed" << endl;
@@ -43,7 +43,7 @@ void Item::display() const {
     cout << "Name: " << name << endl;
     cout << "Description: " << description << endl;
     cout << "Rank: " << rank << endl;
-    stats.displayStats();
+    stats->displayStats();
     cout << "Equipped Status: "<<isEquipped<< endl;
 }
 
