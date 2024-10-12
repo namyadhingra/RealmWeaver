@@ -3,6 +3,8 @@
 #include <external.h>
 #include <Gemini.h>
 #include <Location.h>
+#include <Item.h>
+#include <Quest.h>
 
 class Stats;
 class Quest;
@@ -19,7 +21,7 @@ private:
     // Helper functions
     string generateName(int rank);              // Generates a name based on the NPC's rank (via Gemini API)
     string generateBackStory(int rank);         // Generates a backstory based on the NPC's rank (via Gemini API)
-    // void generateQuests();                      // Generate initial quests (from Gemini API or DB)
+    void generateQuests();                      // Generate initial quests (from Gemini API or DB)
 
 public:
     // Constructors

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-#include "external.h"
->>>>>>> refs/remotes/origin/main
 #include "NPC.h"
 
 // Constructor that generates NPC dynamically from Gemini
@@ -14,7 +10,6 @@ NPC::NPC(int rank,Location &loc) : rank(rank),loc(&loc) {
         json resp = futureResp.get();
         std::cout << "NPC JSON data: " << resp.dump(4) << std::endl; // Print formatted JSON
 
-<<<<<<< HEAD
         this->name = resp["npc"]["name"];
         this->backStory = resp["npc"]["backstory"];
     } catch (const std::exception& e) {
@@ -24,7 +19,7 @@ NPC::NPC(int rank,Location &loc) : rank(rank),loc(&loc) {
     // Generate dynamic stats based on rank or theme
     this->stats = new Stats(rank,name,backStory);
     // Generate NPC quests
-    // generateQuests();
+    generateQuests();
 }
 
 // Constructor with manually assigned values
@@ -34,49 +29,69 @@ NPC::NPC(int rank, const std::string& name, const std::string& backStory, Locati
     this->stats = new Stats(rank,name,backStory);
 }
 
-// // Generate initial quests for NPC (from Gemini API or DB)
-// void NPC::generateQuests() {
-//     // Simulate generating quests from Gemini API
-//     int numQuests = 3; // For example, Gemini generates 3 quests
-//     for (int i = 0; i < numQuests; ++i) {
-//         Quest* newQuest = new Quest(); // Replace this with the actual quest generation logic
-//         addQuest(newQuest);
-//     }
-// }
-=======
-// Constructor that generates NPC dynamically from Gemini
-NPC::NPC(int rank) : rank(rank) {
-    // Generate name and backstory via Gemini API
-    json response_name = Gemini().genNPCName(rank).get();
-    this->name= response_name["name"];
-
-    json response_back_story = Gemini().genNPCBackStory(rank).get();
-    this->backStory = response_back_story["backStory"];
-
-    // Generate dynamic stats based on rank or theme
-    this->stats = new Stats();
-
-    // Generate NPC quests
-    generateQuests();
-}
-
-// Constructor with manually assigned values
-NPC::NPC(int rank, const std::string& name, const std::string& backStory)
-    : rank(rank), name(name), backStory(backStory) {
-    // Generate dynamic stats for NPC manually based on rank or theme
-    this->stats = new Stats();
-}
-
 // Generate initial quests for NPC (from Gemini API or DB)
-void NPC::generateQuests() {
-    // Simulate generating quests from Gemini API
-    int numQuests = 3; // For example, Gemini generates 3 quests
-    for (int i = 0; i < numQuests; ++i) {
-        Quest* newQuest = new Quest();
-        addQuest(newQuest);
+void NPC::generateQuests() 
+{
+    future<json> futureResp = Gemini().genQuests(rank,name,backStory);
+
+    try
+    {
+        json questData = futureResp.get();
+        std::cout << "Quest data: " << questData.dump(4) << std::endl; // Print formatted JSON
+
+        // Check if "quests" is an array in the JSON
+        if (questData.contains("quests") && questData["quests"].is_array()) 
+        {
+            for (const auto& quest : questData["quests"]) {
+
+                const auto& questDetails= quest["quest_details"];
+                int questId=quest["quest_id"];
+
+
+                // Extract quest details
+                std::string name = questDetails["name"];
+                std::string description = questDetails["description"];
+                int rank = questDetails["rank"];
+                std::string task = questDetails["task"];
+                bool isUnique = questDetails["unique"];
+                
+                //get Reward
+                int expReward = questDetails["reward"].contains("exp") ? int(questDetails["reward"]["exp"]):0;                
+                Stats *rewardStats;
+
+                if (questDetails["reward"].contains("statsAdder")) 
+                {
+                    rewardStats=new Stats(questDetails["reward"]["statsAdder"]);
+                }
+
+                vector<Item*> items;
+                if (questDetails["reward"].contains("item") && questDetails["reward"]["item"].is_array()) 
+                {
+                    for (const auto& itemJson : questDetails["reward"]["item"]) 
+                    {
+                        Stats itemStats(itemJson["statsAdder"]);
+                        Item *newItem= new Item(itemJson["rank"],itemJson["name"],itemJson["desc"],&itemStats);
+
+                        items.push_back(newItem);
+                    }
+                }
+                
+                Reward questReward(rewardStats,expReward, items);
+
+                // Create the new quest and add it
+                Quest* newQuest = new Quest(questId,name, description, rank, task, questReward,isUnique);
+                addQuest(newQuest);
+            }
+        } 
+        else 
+        {
+            std::cerr << "Invalid quest data received from Gemini API.\n";
+        }
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl; // Handle exceptions
     }
 }
->>>>>>> refs/remotes/origin/main
 
 // Get the NPC's rank
 int NPC::getRank() const {
@@ -125,39 +140,23 @@ bool NPC::hasQuests() const {
 
 // Display NPC's basic info
 void NPC::displayNPCInfo() const {
-<<<<<<< HEAD
     std::cout << "NPC Name: " << name << std::endl;
     std::cout << "NPC Rank: " << rank << std::endl;
     std::cout << "NPC Backstory: " << backStory << std::endl;
-=======
-    cout << "NPC Name: " << name << endl;
-    cout << "NPC Rank: " << rank << endl;
-    cout << "NPC Backstory: " << backStory << endl;
->>>>>>> refs/remotes/origin/main
 }
 
 // Display all available quests
 void NPC::displayQuests() const {
     if (!quests.empty()) {
-<<<<<<< HEAD
         std::cout << "NPC has " << quests.size() << " quests available." << std::endl;
     } else {
         std::cout << "No quests available for this NPC." << std::endl;
-=======
-        cout << "NPC has " << quests.size() << " quests available." << endl;
-    } else {
-        cout << "No quests available for this NPC." << endl;
->>>>>>> refs/remotes/origin/main
     }
 }
 
 // Interaction logic for talking to the NPC
 void NPC::interact() {
-<<<<<<< HEAD
     std::cout << "Interacting with NPC: " << name << std::endl;
-=======
-    cout << "Interacting with NPC: " << name << endl;
->>>>>>> refs/remotes/origin/main
     // Display available quests
     displayQuests();
     // You can add dialogue options or more interactions here
