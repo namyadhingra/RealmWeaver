@@ -107,6 +107,12 @@ Stats::Stats(const int& rank, const string &npcName, const string &npcBackStory)
     }    
 }
 
+Stats::Stats(int n) {
+    for (const auto& stat : defaultStats) {
+        attributes[stat.first] = stat.second * n; // Multiply default stats by n
+    }
+}
+
 // Set a specific stat
 void Stats::setStat(const string& statName, int value) {
     attributes[statName] = value;
@@ -177,4 +183,12 @@ bool Stats::isStatAbove(const string& statName, int threshold) const {
         return attributes.at(statName) > threshold;
     }
     return false; // Return false if stat doesn't exist
+}
+
+void Stats::giveRewardStats(const Stats& rewardStats)
+{
+    for(const auto& stat : rewardStats.getAllStats())
+    {
+        attributes[stat.first]+=stat.second;
+    }
 }
