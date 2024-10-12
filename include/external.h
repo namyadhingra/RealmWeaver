@@ -10,6 +10,8 @@
 #include <cstddef>  // For C++
 #include <mutex>
 #include <future>
+#include <vector>
+
 
 using namespace std;
 using namespace nlohmann;
