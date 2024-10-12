@@ -19,6 +19,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/include             #General include dir
     ${CMAKE_SOURCE_DIR}/src/gemini          # Gemini module headers
     ${CMAKE_SOURCE_DIR}/src/core            #Core game engine headers
+    ${CMAKE_SOURCE_DIR}/src/stats           # Stats module headers
     ${CMAKE_SOURCE_DIR}/src/item       #Equipment module headers
     ${CMAKE_SOURCE_DIR}/src/event           #Event module headers
     ${CMAKE_SOURCE_DIR}/src/interactions    #core game engine headers
@@ -26,9 +27,8 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/src/npc             # NPC module headers
     ${CMAKE_SOURCE_DIR}/src/quest           # Quest module headers
     ${CMAKE_SOURCE_DIR}/src/location        # Location module headers
-    ${CMAKE_SOURCE_DIR}/src/stats           # Stats module headers
     ${CMAKE_SOURCE_DIR}/src/inventory       # Inventory module headers
-)
+    )
 
 # Find the CURL library. This searches for the required CURL package on your system.
 # REQUIRED means that the CMake process will fail if CURL is not found.
@@ -48,6 +48,10 @@ set(PLAYER_SOURCES
     src/player/Player.cpp
 )
 
+set(STATS_SOURCES
+    src/stats/Stats.cpp
+)
+
 set(NPC_SOURCES
     src/npc/NPC.cpp
 )
@@ -58,10 +62,6 @@ set(QUEST_SOURCES
 
 set(LOCATION_SOURCES
     src/location/Location.cpp
-)
-
-set(STATS_SOURCES
-    src/stats/Stats.cpp
 )
 
 set(INVENTORY_SOURCES
@@ -87,10 +87,10 @@ set(SOURCES
     ${GEMINI_SOURCES}
     ${CORE_SOURCES}
     ${PLAYER_SOURCES}
+    ${STATS_SOURCES}
     ${NPC_SOURCES}
     ${QUEST_SOURCES}
     ${LOCATION_SOURCES}
-    ${STATS_SOURCES}
     ${INVENTORY_SOURCES}
     ${ITEM_SOURCES}
     ${EVENT_SOURCES}
