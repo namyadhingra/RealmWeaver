@@ -17,32 +17,6 @@ int main()
     string locName,locDesc;
     int rank;
 
-    // do
-    // {
-    //     cout<<"Enter the prompt : ";
-    //     getline(cin, prompt);
-
-    //     future<json> futureJson = Gemini().genStatsForTheme(prompt);
-
-    //     try 
-    //     {
-    //         json stats = futureJson.get(); // Block until the result is ready
-    //         std::cout << "JSON data: " << stats.dump(4) << std::endl; // Print formatted JSON
-    //     } 
-    //     catch (const std::exception& e) 
-    //     {
-    //         std::cerr << "Error: " << e.what() << std::endl; // Handle exceptions
-    //     }
-
-    // } while (prompt!="\\quit");
-    
-    
-    // return 0;
-
-    string nm = "name";
-    string bs = "backStory";
-    future<json> futureJson = Gemini().genQuests(1, nm, bs);
-
     do 
     {
 
@@ -51,20 +25,20 @@ int main()
         
         cout << "Enter the locDesc: ";
         getline(cin, locDesc);
+        // locName ="Volcanic Crater";
+        // locDesc = "A searing hot pit at the heart of a dormant volcano, filled with molten lava and dangerous creatures.";
         cout << "Enter the Rank: ";
         cin>>rank;
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
 
         Location loc(rank,locName,locDesc);
         NPC npc(rank,loc);
-
+        
     } while(rank!=-1);
     
     
     return 0;
 }
-
-#include <string>
 
 string GameEngine::getRankName(int rank) {
     switch (rank) {
