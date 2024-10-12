@@ -204,12 +204,17 @@ json Gemini::isRespCorrect(const json& resp, const json& def)
 
             try 
             {
+                // Try to access and parse the string into JSON
                 json parsedJson = json::parse(resp["candidates"][0]["content"]["parts"][0]["text"].get<std::string>());
-                // cout<<parsedJson;
+
+                // Print the parsed JSON nicely formatted
+                // cout << parsedJson.dump(4) << endl; // Use 'dump(4)' for pretty printing with indentations
                 return parsedJson;
-            }
+            } 
             catch (const json::parse_error& e) 
             {
+                // Output the specific error for debugging purposes
+                cerr << "JSON Parse Error: " << e.what() << endl;
                 return def; // Return an empty JSON object on parse error
             }
         }
@@ -314,6 +319,37 @@ future<json> Gemini::genNPCStats(const int& rank, const string &npcName, const s
 
         json final = isRespCorrect(jsonResp, defaultResp);
 
+        return final;
+    });
+}
+
+
+//where the quest will take place and wgame will play//////////////
+future<json> Gemini::genQuests(const int &rank, const string &npcName, const string &npcBackStory)
+{
+    return async(launch::async, [this, rank, npcName, npcBackStory]()
+    {
+        // Default quest structure in case the API call fails or response is invalid
+        json defaultResp = {
+            { "quests", json::array() }
+        };
+
+        // Prepare prompt
+        string prompt = 
+            "Generate a quest or a series of quests for an NPC to give to the Player. NPC is named '" + npcName + "', "
+            "with the following description: '" + npcBackStory + "'. "
+            "The NPC has a rank of " + std::to_string(rank) + "/10 (" + GameEngine().getRankName(rank) + "). "
+            "The backstory of the NPC should inform the quest themes.";
+
+        cout<<prompt;
+
+        // Send request to Gemini API
+        json jsonResp = this->sendGeminiReq("../json/npcQuests.json", prompt);
+        cout<<jsonResp;
+
+        // Ensure response is valid or fallback to default
+        json final = isRespCorrect(jsonResp, defaultResp);
+        cout<<final;
         return final;
     });
 }
