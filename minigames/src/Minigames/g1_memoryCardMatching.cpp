@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -6,7 +7,6 @@
 #include <ctime>
 
 using namespace std;
-namespace py = pybind11;
 
 vector<int> generateCards(int n) {
     vector<int> cards;
@@ -22,42 +22,79 @@ vector<int> generateCards(int n) {
     return cards;
 }
 
-string memoryGame(int n) {
+int main() {
+    int n = 4;  // Number of pairs
     vector<int> cards = generateCards(n);
     stack<int> flipStack;
     vector<bool> revealed(2 * n, false);
     int matches = 0;
-    string output;
 
-    while (matches < n) {
-        int pos;
-        output += "Choose a card to flip (0 to " + to_string(2 * n - 1) + "): ";
-        cin >> pos;
+    sf::RenderWindow window(sf::VideoMode(600, 400), "Memory Card Matching Game");
+    sf::Font font;
+    font.loadFromFile("arial.ttf");
 
-        if (revealed[pos]) {
-            output += "Card already revealed!\n";
-            continue;
+    vector<sf::RectangleShape> cardShapes(2 * n);
+    for (int i = 0; i < 2 * n; i++) {
+        cardShapes[i].setSize(sf::Vector2f(80, 120));
+        cardShapes[i].setFillColor(sf::Color::Green);
+        cardShapes[i].setPosition(100 * (i % n), 120 * (i / n));
+    }
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
 
-        flipStack.push(pos);
-        revealed[pos] = true;
-        output += "Card flipped: " + to_string(cards[pos]) + "\n";
-
-        if (flipStack.size() == 2) {
-            int top1 = flipStack.top();
-            flipStack.pop();
-            int top2 = flipStack.top();
-            flipStack.pop();
-
-            if (cards[top1] == cards[top2]) {
-                output += "Match found!\n";
-                matches++;
+        window.clear();
+        for (int i = 0; i < 2 * n; i++) {
+            if (revealed[i]) {
+                sf::Text cardNumber;
+                cardNumber.setFont(font);
+                cardNumber.setString(to_string(cards[i]));
+                cardNumber.setCharacterSize(24);
+                cardNumber.setFillColor(sf::Color::Black);
+                cardNumber.setPosition(cardShapes[i].getPosition().x + 30, cardShapes[i].getPosition().y + 40);
+                window.draw(cardShapes[i]);
+                window.draw(cardNumber);
             } else {
-                output += "Not a match. Try again.\n";
-                revealed[top1] = revealed[top2] = false;
+                window.draw(cardShapes[i]);
+            }
+        }
+
+        window.display();
+
+        if (matches == n) {
+            // Display message and close the window
+            cout << "Congratulations! You've matched all cards.\n";
+            window.close();
+        }
+
+        // Implement SFML-based interaction here, where mouse click flips the cards
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+            for (int i = 0; i < 2 * n; i++) {
+                if (cardShapes[i].getGlobalBounds().contains(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) && !revealed[i]) {
+                    flipStack.push(i);
+                    revealed[i] = true;
+                    if (flipStack.size() == 2) {
+                        int first = flipStack.top();
+                        flipStack.pop();
+                        int second = flipStack.top();
+                        flipStack.pop();
+                        if (cards[first] == cards[second]) {
+                            matches++;
+                        } else {
+                            revealed[first] = false;
+                            revealed[second] = false;
+                        }
+                    }
+                    break;
+                }
             }
         }
     }
-    output += "Congratulations! You've matched all cards.\n";
-    return output;
+
+    return 0;
 }

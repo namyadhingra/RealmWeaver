@@ -1,3 +1,5 @@
+//Dynamic programming
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
 #include <climits>
@@ -17,7 +19,7 @@ int minPathDP(vector<vector<int>>& maze, int n) {
     return dp[n-1][n-1];
 }
 
-// Maze Runner minigame
+// Maze Runner minigame with SFML
 void mazeRunner() {
     int n = 4;  // Maze size
     vector<vector<int>> maze = {
@@ -27,14 +29,49 @@ void mazeRunner() {
         {2, 1, 2, 1}
     };
 
-    cout << "Maze Grid:\n";
-    for (auto row : maze) {
-        for (auto cell : row) cout << cell << " ";
-        cout << endl;
+    sf::RenderWindow window(sf::VideoMode(800, 800), "Maze Runner Game");
+    sf::Font font;
+    font.loadFromFile("arial.ttf");
+
+    sf::Text minPathText;
+    minPathText.setFont(font);
+    minPathText.setCharacterSize(30);
+    minPathText.setFillColor(sf::Color::White);
+    minPathText.setPosition(50, 50);
+
+    // Drawing the maze grid
+    int cellSize = 150;
+    vector<sf::RectangleShape> cells;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
+            cell.setFillColor(sf::Color(100, 100, 250));
+            cell.setOutlineThickness(2);
+            cell.setOutlineColor(sf::Color::Black);
+            cell.setPosition(j * cellSize + 50, i * cellSize + 100);
+
+            cells.push_back(cell);
+        }
     }
 
-    int result = minPathDP(maze, n);
-    cout << "Minimum cost to reach the end: " << result << endl;
+    // Minimum path cost calculation
+    int minPathCost = minPathDP(maze, n);
+    minPathText.setString("Minimum cost to reach the end: " + to_string(minPathCost));
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        for (auto& cell : cells) {
+            window.draw(cell);
+        }
+        window.draw(minPathText);
+        window.display();
+    }
 }
 
 int main() {
